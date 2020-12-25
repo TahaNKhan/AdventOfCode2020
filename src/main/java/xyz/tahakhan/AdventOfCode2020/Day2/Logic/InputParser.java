@@ -28,16 +28,14 @@ public class InputParser {
 
         // Remove the validator letter
         passwordAttributes = passwordAttributes.substring(0, passwordAttributes.length() - 2);
-        int[] indexes = Arrays.stream(passwordAttributes.split("-")).mapToInt(i -> Integer.parseInt(i)).toArray();
+        int[] indexes = Arrays.stream(passwordAttributes.split("-")).mapToInt(Integer::parseInt).toArray();
         row.setFirstIndex(indexes[0] - 1);
         row.setSecondIndex(indexes[1] - 1);
 
-        // First char is a space, just remove it.
-        row.setPassword(firstSplit[1].substring(1));
+        row.setPassword(firstSplit[1].trim());
 
         return row;
     }
-
 
     private static Row parsePartOne(String line) {
         PartOneParsedRow row = new PartOneParsedRow();
@@ -50,7 +48,7 @@ public class InputParser {
 
         // Remove the validator letter
         passwordAttributes = passwordAttributes.substring(0, passwordAttributes.length() - 2);
-        int[] bounds = Arrays.stream(passwordAttributes.split("-")).mapToInt(i -> Integer.parseInt(i)).toArray();
+        int[] bounds = Arrays.stream(passwordAttributes.split("-")).mapToInt(Integer::parseInt).toArray();
         row.setLowerBound(bounds[0]);
         row.setUpperBound(bounds[1]);
 

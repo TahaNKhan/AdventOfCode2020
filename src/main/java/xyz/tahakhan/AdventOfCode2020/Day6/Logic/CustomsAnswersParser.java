@@ -41,7 +41,7 @@ public class CustomsAnswersParser {
             }
         }
         var retVal = 0;
-        for(var key : answersDictionary.keySet()) {
+        for(val key : answersDictionary.keySet()) {
             if (answersDictionary.get(key) == groupAnswers.size())
                 retVal++;
         }
