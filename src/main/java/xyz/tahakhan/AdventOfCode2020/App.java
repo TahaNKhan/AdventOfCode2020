@@ -8,13 +8,13 @@ public class App {
 
     @SuppressWarnings("deprecation")
     public static void main(String[] args) throws Exception {
-        Integer dayCodeToRun = getDayCodeToRun(args);
+        int dayCodeToRun = getDayCodeToRun(args);
         Class<?> runnerClass = Class.forName("xyz.tahakhan.AdventOfCode2020.Day" + dayCodeToRun + ".Solution");
         BaseSolution solution = (BaseSolution) runnerClass.newInstance();
         solution.process();
     }
 
-    private static Integer getDayCodeToRun(String[] args) {
+    private static int getDayCodeToRun(String[] args) {
         if (args == null || args.length < 1)
             return defaultDayCodeToRun;
         try {

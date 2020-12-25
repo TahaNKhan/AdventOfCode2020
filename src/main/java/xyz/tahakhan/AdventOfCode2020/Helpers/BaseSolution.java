@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * All solutions to each day need to inherit this interface to work.
+ */
 public interface BaseSolution {
     void process() throws Exception;
 
