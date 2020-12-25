@@ -2,29 +2,25 @@ package xyz.tahakhan.AdventOfCode2020;
 
 import xyz.tahakhan.AdventOfCode2020.Helpers.BaseSolution;
 
-import java.io.FileNotFoundException;
-
 public class App {
 
-    private static int defaultDayCodeToRun = 5;
+    private static final int defaultDayCodeToRun = 6;
 
     @SuppressWarnings("deprecation")
     public static void main(String[] args) throws Exception {
-        Integer dayCodeToRun = getRuntimeDayCodeToRun(args);
-        if (dayCodeToRun == null)
-            dayCodeToRun = defaultDayCodeToRun;
+        Integer dayCodeToRun = getDayCodeToRun(args);
         Class<?> runnerClass = Class.forName("xyz.tahakhan.AdventOfCode2020.Day" + dayCodeToRun + ".Solution");
         BaseSolution solution = (BaseSolution) runnerClass.newInstance();
         solution.process();
     }
 
-    private static Integer getRuntimeDayCodeToRun(String[] args) {
+    private static Integer getDayCodeToRun(String[] args) {
         if (args == null || args.length < 1)
-            return null;
+            return defaultDayCodeToRun;
         try {
             return Integer.parseInt(args[0]);
         } catch (NumberFormatException ex) {
-            return null;
+            return defaultDayCodeToRun;
         }
     }
 }
