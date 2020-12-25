@@ -63,16 +63,18 @@ public class Solution implements BaseSolution {
     }
 
     private int numberOfBags(Bag bag, HashMap<String, Bag> map) {
-        var totalBags = 0;
+        var numberOfInnerBags = 0;
         for (val innerBag : bag.getInnerBags()) {
             val actualBag = map.get(innerBag.getColor());
-            totalBags += innerBag.getNumber() * numberOfBags(actualBag, map);
+            numberOfInnerBags += innerBag.getNumber() * numberOfBags(actualBag, map);
         }
         // itself + other bags
-        return 1 + totalBags;
+        return 1 + numberOfInnerBags;
     }
 
     //endregion
+
+    //region Helpers
 
     private HashMap<String, Bag> createOrGetMap(List<Bag> bags) {
         if (map != null)
@@ -86,4 +88,6 @@ public class Solution implements BaseSolution {
     }
 
     private HashMap<String, Bag> map;
+
+    //endregion
 }
