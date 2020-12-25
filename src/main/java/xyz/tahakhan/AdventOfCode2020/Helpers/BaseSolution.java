@@ -12,6 +12,20 @@ import java.util.Scanner;
 public interface BaseSolution {
     void process() throws Exception;
 
+    /**
+     * Reads the input.txt file in the DayX folder, expects the file to be in "src/main/java/xyz/tahakhan/AdventOfCode2020/DayX" folder.
+     * @return The lines of the read file.
+     */
+    default List<String> readFile() throws FileNotFoundException {
+        String fileName = "src/main/java/" + getClass().getPackage().getName().replace(".", "/") +  "/input.txt";
+        return readFile(fileName);
+    }
+
+    /**
+     * Read a file given a file name.
+     * @param fileName The location of the file.
+     * @return The lines of a the read file.
+     */
     default List<String> readFile(String fileName) throws FileNotFoundException {
         ArrayList<String> result = new ArrayList<>();
         Scanner reader = new Scanner(new File(fileName));

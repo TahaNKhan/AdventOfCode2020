@@ -4,7 +4,7 @@ import xyz.tahakhan.AdventOfCode2020.Helpers.BaseSolution;
 
 public class App {
 
-    private static final int defaultDayCodeToRun = 6;
+    private static final int defaultDayCodeToRun = 7;
 
     @SuppressWarnings("deprecation")
     public static void main(String[] args) throws Exception {
