@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 
 public class App {
 
-    private static int defaultDayCodeToRun = 2;
+    private static int defaultDayCodeToRun = 5;
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, FileNotFoundException {
         Integer dayCodeToRun = getRuntimeDayCodeToRun(args);
