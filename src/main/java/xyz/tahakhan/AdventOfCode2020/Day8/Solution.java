@@ -13,9 +13,15 @@ public class Solution implements BaseSolution {
         val emulator = new ConsoleEmulator(input);
 
         System.out.println("Day 8 part 1 answer: " + partOne(emulator));
+
+        System.out.println("Day 8 part 2 answer: " + partTwo(emulator));
     }
 
     private int partOne(ConsoleEmulator emulator) {
         return emulator.findInfiniteLoop().getAccumulator();
+    }
+
+    private int partTwo(ConsoleEmulator emulator) throws Exception {
+        return emulator.fixInfiniteLoop().getAccumulator();
     }
 }
