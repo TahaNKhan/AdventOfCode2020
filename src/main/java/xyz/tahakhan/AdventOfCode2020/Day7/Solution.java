@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Solution implements BaseSolution {
+
+    private final String SPECIAL_BAG = "shiny gold";
+
     @Override
     public void process() throws Exception {
         val input = readFile();
@@ -21,15 +24,18 @@ public class Solution implements BaseSolution {
                 .collect(Collectors.toList());
 
         System.out.println("Day 7 part 1 answer: " + partOne(bags));
+
+        System.out.println("Day 7 part 2 answer: " + partTwo(bags));
     }
 
+    //region Part One
+
     private int partOne(List<Bag> bags) {
-        val bagToFind = "shiny gold";
-        val map = createMap(bags);
+        val map = createOrGetMap(bags);
 
         var totalBagsWithShinyGold = new HashSet<String>();
         for (val bag : bags)
-            if (containsBag(bag, bagToFind, map))
+            if (containsBag(bag, SPECIAL_BAG, map))
                 totalBagsWithShinyGold.add(bag.getColor());
 
         return totalBagsWithShinyGold.size();
@@ -46,11 +52,38 @@ public class Solution implements BaseSolution {
         return false;
     }
 
-    private HashMap<String, Bag> createMap(List<Bag> bags) {
+    //endregion
+
+    //region Part Two
+
+    private int partTwo(List<Bag> bags) {
+        val map = createOrGetMap(bags);
+        // numbers of bags minus the shiny gold bag
+        return numberOfBags(map.get(SPECIAL_BAG), map) - 1;
+    }
+
+    private int numberOfBags(Bag bag, HashMap<String, Bag> map) {
+        var totalBags = 0;
+        for (val innerBag : bag.getInnerBags()) {
+            val actualBag = map.get(innerBag.getColor());
+            totalBags += innerBag.getNumber() * numberOfBags(actualBag, map);
+        }
+        // itself + other bags
+        return 1 + totalBags;
+    }
+
+    //endregion
+
+    private HashMap<String, Bag> createOrGetMap(List<Bag> bags) {
+        if (map != null)
+            return map;
         val dictionary = new HashMap<String, Bag>();
         for (val bag : bags)
             dictionary.put(bag.getColor(), bag);
 
+        map = dictionary;
         return dictionary;
     }
+
+    private HashMap<String, Bag> map;
 }
