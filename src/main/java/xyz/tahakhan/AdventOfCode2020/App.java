@@ -8,7 +8,8 @@ public class App {
 
     private static int defaultDayCodeToRun = 5;
 
-    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, FileNotFoundException {
+    @SuppressWarnings("deprecation")
+    public static void main(String[] args) throws Exception {
         Integer dayCodeToRun = getRuntimeDayCodeToRun(args);
         if (dayCodeToRun == null)
             dayCodeToRun = defaultDayCodeToRun;
@@ -22,7 +23,7 @@ public class App {
             return null;
         try {
             return Integer.parseInt(args[0]);
-        } catch (NumberFormatException _) {
+        } catch (NumberFormatException ex) {
             return null;
         }
     }
