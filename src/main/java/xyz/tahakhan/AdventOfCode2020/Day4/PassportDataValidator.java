@@ -8,6 +8,8 @@ import java.util.HashSet;
 import java.util.regex.*;
 
 public class PassportDataValidator {
+    private static final HashSet<String> validEyeColors = new HashSet<>(Arrays.asList("amb", "blu", "brn", "gry", "grn", "hzl", "oth"));
+
     public boolean validatePartOne(PassportData data) {
         return data.getBirthYear() != null
                 && data.getIssueYear() != null
@@ -38,8 +40,7 @@ public class PassportDataValidator {
         var pattern = Pattern.compile(passportIDRegex);
         var matcher = pattern.matcher(passportID);
 
-        val matched = matcher.find();
-        return matched;
+        return matcher.find();
     }
 
     private boolean isEyeColorValid(PassportData data) {
@@ -54,11 +55,10 @@ public class PassportDataValidator {
         if (hairColor == null || hairColor.isEmpty())
             return false;
 
-        String regexPattern = "\\#[0-9|a-f]{6}";
+        String regexPattern = "#+[0-9|a-f]{6}";
         Pattern hairColorPattern = Pattern.compile(regexPattern, Pattern.CASE_INSENSITIVE);
         Matcher matcher = hairColorPattern.matcher(hairColor);
-        val matched = matcher.find();
-        return matched;
+        return matcher.find();
     }
 
     private boolean isBirthYearValid(PassportData data) {
@@ -113,6 +113,4 @@ public class PassportDataValidator {
         System.out.println("bad passport: " + data);
         System.out.println("bad field: " + field);
     }
-    private static HashSet<String> validEyeColors = new HashSet<>(Arrays.asList("amb", "blu", "brn", "gry", "grn", "hzl", "oth"));
-
 }

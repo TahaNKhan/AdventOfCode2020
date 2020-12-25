@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Solution implements BaseSolution {
     @Override
-    public void Process() throws FileNotFoundException {
+    public void process() throws FileNotFoundException {
         List<String> inputData = readFile("src/main/java/xyz/tahakhan/AdventOfCode2020/Day4/input.txt");
         List<PassportData> parsedPassports = parseData(inputData);
         PassportDataValidator validator = new PassportDataValidator();

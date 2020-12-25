@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Solution implements BaseSolution {
     @Override
-    public void Process() throws FileNotFoundException {
+    public void process() throws FileNotFoundException {
         List<String> testData = importTestData();
         int partOneAnswer = findNumberOfTreesPart1(testData);
         System.out.println("Answer to part 1: " + partOneAnswer);

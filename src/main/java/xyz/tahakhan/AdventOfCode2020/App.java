@@ -6,7 +6,7 @@ import java.io.FileNotFoundException;
 
 public class App {
 
-    private static int defaultDayCodeToRun = 4;
+    private static int defaultDayCodeToRun = 2;
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, FileNotFoundException {
         Integer dayCodeToRun = getRuntimeDayCodeToRun(args);
@@ -14,7 +14,7 @@ public class App {
             dayCodeToRun = defaultDayCodeToRun;
         Class<?> runnerClass = Class.forName("xyz.tahakhan.AdventOfCode2020.Day" + dayCodeToRun + ".Solution");
         BaseSolution solution = (BaseSolution) runnerClass.newInstance();
-        solution.Process();
+        solution.process();
     }
 
     private static Integer getRuntimeDayCodeToRun(String[] args) {

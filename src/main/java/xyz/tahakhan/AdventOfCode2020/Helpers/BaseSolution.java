@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public interface BaseSolution {
-    public abstract void Process() throws FileNotFoundException;
+    public abstract void process() throws FileNotFoundException;
 
     public default List<String> readFile(String fileName) throws FileNotFoundException {
         ArrayList<String> result = new ArrayList<>();
