@@ -52,11 +52,13 @@ public class ConsoleEmulator {
 
     public ConsoleState fixInfiniteLoop() throws Exception {
         var currentFlippedLine = 0;
+        ConsoleState result;
         do {
             currentFlippedLine = flipNextInstructionAndReset(currentFlippedLine);
-        } while(!findInfiniteLoop().isExecutedSuccessfully());
+            result = findInfiniteLoop();
+        } while(!result.isExecutedSuccessfully());
 
-        return new ConsoleState(this.programCounter, this.accumulator, true);
+        return result;
     }
 
     private int flipNextInstructionAndReset(int currentFlippedLine) throws Exception {
