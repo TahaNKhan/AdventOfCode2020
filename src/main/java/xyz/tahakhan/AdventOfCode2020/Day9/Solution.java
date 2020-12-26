@@ -8,15 +8,16 @@ import java.util.stream.Collectors;
 
 public class Solution implements BaseSolution {
 
+    private final int PREAMBLE_SIZE = 25;
+
     @Override
     public void process() throws Exception {
         val input = readFile()
                 .stream()
                 .map(Long::parseLong)
                 .collect(Collectors.toList());
-        val preambleSize = 25;
 
-        System.out.println("Day 9 Part 1 answer: " + input.get(partOne(input, preambleSize)));
+        System.out.println("Day 9 Part 1 answer: " + input.get(partOne(input, PREAMBLE_SIZE)));
 
     }
 
