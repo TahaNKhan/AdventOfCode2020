@@ -43,6 +43,4 @@ public class Solution implements BaseSolution {
         }
         return oneJoltDifferenceTotal * threeJoltDifferentTotal;
     }
-
-
 }
